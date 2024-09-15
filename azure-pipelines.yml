@@ -8,13 +8,14 @@ steps:
 - task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific'
-    downloadType: 'single'
-    artifactName: 'website-artifact'
+    project: 'Repo1'
+    pipeline: 'Test1'
+    buildVersionToDownload: 'latest'
     downloadPath: '$(Pipeline.Workspace)'
 
 - script: |
     echo "Deploying website to S3 bucket..."
-    aws s3 sync $(Pipeline.Workspace)/website-artifact s3://testttting987 --delete
+    aws s3 sync $(Pipeline.Workspace)/website-artifact s3://testttting987  --delete
   displayName: 'Deploy to S3'
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
