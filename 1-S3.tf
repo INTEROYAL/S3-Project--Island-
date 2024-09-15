@@ -1,6 +1,14 @@
 resource "aws_s3_bucket" "bucket" {
   bucket        = "testttting987"
   force_destroy = true
+
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [
+      bucket,     # Ignore name changes
+      versioning, # Ignore versioning changes
+    ]
+  }
 }
 
 resource "aws_s3_bucket_website_configuration" "site" {
