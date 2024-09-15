@@ -14,7 +14,7 @@ steps:
 
 - script: |
     echo "Deploying website to S3 bucket..."
-    aws s3 sync $(Pipeline.Workspace)/website-artifact s3://your-bucket-name --delete
+    aws s3 sync $(Pipeline.Workspace)/website-artifact s3://testttting987 --delete
   displayName: 'Deploy to S3'
   env:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
