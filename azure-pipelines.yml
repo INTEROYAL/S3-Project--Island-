@@ -9,7 +9,7 @@ steps:
   inputs:
     buildType: 'specific'
     project: 'Repo1'
-    pipeline: 'Test1'
+    pipeline: 'INTEROYAL.S3-Project--Island-'
     buildVersionToDownload: 'latest'
     downloadPath: '$(Pipeline.Workspace)'
 
