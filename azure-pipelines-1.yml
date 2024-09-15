@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self  # Checks out the code from the GitHub repo
+
+- script: |
+    echo "Building the project..."
+    # Add your build commands here
+  displayName: 'Build Project'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Directory containing build outputs
+    artifactName: 'INTEROYAL.S3-Project--Island-'  # The name for the artifact
+    publishLocation: 'Container'
