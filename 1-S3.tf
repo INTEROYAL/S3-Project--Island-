@@ -1,11 +1,8 @@
+this is the script terraform is using:
+
 resource "aws_s3_bucket" "bucket" {
   bucket        = "testttting987"
   force_destroy = true
-
-  lifecycle {
-    prevent_destroy = true
-    ignore_changes  = [website, tags]  # Adjust as needed
-  }
 }
 
 resource "aws_s3_bucket_website_configuration" "site" {
@@ -53,7 +50,6 @@ resource "aws_s3_bucket_policy" "site" {
   })
 }
 
-# Upload HTML files
 resource "aws_s3_object" "upload_html" {
   for_each     = fileset("${path.module}/", "*.html")
   bucket       = aws_s3_bucket.bucket.id
@@ -63,7 +59,6 @@ resource "aws_s3_object" "upload_html" {
   content_type = "text/html"
 }
 
-# Upload image files
 resource "aws_s3_object" "upload_images" {
   for_each     = fileset("${path.module}/", "*.png")
   bucket       = aws_s3_bucket.bucket.id
