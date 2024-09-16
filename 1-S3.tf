@@ -1,4 +1,4 @@
-this is the script terraform is using:
+
 
 resource "aws_s3_bucket" "bucket" {
   bucket        = "testttting987"
